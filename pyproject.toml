@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "token-pruner"
+version = "0.1.1"
+description = "Token pruning for video vision transformers and video-language models."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+license-files = [
+    "LICENSE",
+    "NOTICE",
+    "third_party/licenses/*",
+    "src/token_pruner/dataloading/LICENSE",
+]
+dependencies = [
+    "accelerate>=1.1",
+    "decord",
+    "einops",
+    "huggingface_hub>=1.5,<2",
+    "numpy",
+    "opencv-python-headless",
+    "pillow",
+    "safetensors>=0.8",
+    "sentencepiece>=0.2",
+    "torch",
+    "tqdm>=4.60",
+    "transformers>=5.16.1,<5.18",
+]
+[project.entry-points."lmms_eval.models"]
+token_pruner = "token_pruner.manifests:get_manifests"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]

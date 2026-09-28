@@ -1,0 +1,62 @@
+Token-Pruner
+Copyright 2026 penguin.tomorin
+
+This product includes software adapted from the projects below.
+
+OneVision-Encoder (https://github.com/EvolvingLMMs-Lab/OneVision-Encoder)
+Apache License 2.0; see src/token_pruner/dataloading/LICENSE.
+Copyright 2024 OneVision Encoder Authors.
+src/token_pruner/dataloading/hevc_feature_decoder_mv.py is derived from
+tools/tools_for_hevc/hevc_feature_decoder_mv.py at commit
+54434a5461e6881b851ad04bbd8ca82edcf88c60, trimmed to the feature reader used
+here and modified for this repository's decoder path.
+
+LanguageBind (https://github.com/PKU-YuanGroup/LanguageBind)
+MIT License; see third_party/licenses/LanguageBind-LICENSE.
+Copyright (c) 2023 PKU-YUAN's Group (袁粒课题组-北大信工).
+The VideoBind vision tower in src/token_pruner/run_videollava_official.py
+(VideoBindVisionConfig, PatchDropout, VideoBindEncoderLayer, VideoBindEncoder,
+VideoBindVisionTransformer) is adapted from languagebind/video/modeling_video.py
+as distributed with Video-LLaVA. The encoder classes of that file derive from
+Hugging Face Transformers; see the Transformers entry below.
+
+OpenCLIP (https://github.com/mlfoundations/open_clip)
+MIT License; see third_party/licenses/OpenCLIP-LICENSE.
+Copyright (c) 2012-2021 Gabriel Ilharco, Mitchell Wortsman, Nicholas Carlini,
+Rohan Taori, Achal Dave, Vaishaal Shankar, John Miller, Hongseok Namkoong,
+Hannaneh Hajishirzi, Ali Farhadi, Ludwig Schmidt.
+PatchDropout in src/token_pruner/run_videollava_official.py originates in
+OpenCLIP and is included through LanguageBind.
+
+Video-LLaVA (https://github.com/PKU-YuanGroup/Video-LLaVA) and
+LLaVA (https://github.com/haotian-liu/LLaVA)
+Apache License 2.0; see LICENSE.
+In src/token_pruner/run_videollava_official.py, tokenizer_image_token follows
+tokenizer_image_token in llava/mm_utils.py, IMAGE_TOKEN_INDEX follows
+llava/constants.py, and LLAVA_V1_SYSTEM_PROMPT follows the system prompt in
+llava/conversation.py, as distributed with Video-LLaVA (videollava/).
+
+Hugging Face Transformers (https://github.com/huggingface/transformers)
+Apache License 2.0; see LICENSE.
+Copyright 2025 The Qwen Team and The HuggingFace Inc. team.
+Copyright 2022 Meta and The HuggingFace Inc. team.
+Copyright 2021 The OpenAI Team Authors and The HuggingFace Team.
+The pruning forward in install_qwen3_vl_encoder_pruning
+(src/token_pruner/run_qwen3_vl.py) follows Qwen3VLVisionModel.forward in
+models/qwen3_vl/modeling_qwen3_vl.py, and forward_timesformer_layer
+(src/token_pruner/run_timesformer.py) follows TimesformerLayer.forward in
+models/timesformer/modeling_timesformer.py, both from Transformers 5.16.1.
+VideoBindEncoderLayer, VideoBindEncoder and VideoBindVisionTransformer in
+src/token_pruner/run_videollava_official.py derive, through LanguageBind, from
+CLIPEncoderLayer, CLIPEncoder and CLIPVisionTransformer in
+models/clip/modeling_clip.py.
+
+InternVL (https://github.com/OpenGVLab/InternVL)
+MIT License; see third_party/licenses/InternVL-LICENSE, the license text of the
+InternVL repository (Copyright (c) 2023 OpenGVLab).
+Copyright (c) 2024 OpenGVLab.
+install_feature_shim in src/token_pruner/run_internvl.py follows
+InternVLChatModel.extract_feature in modeling_internvl_chat.py of the
+OpenGVLab/InternVL3_5-8B-Instruct checkpoint, revision
+27506812aa9914804018996329e895977ee2d0c8, whose file header carries the
+Copyright (c) 2024 OpenGVLab notice and refers to that MIT license.
